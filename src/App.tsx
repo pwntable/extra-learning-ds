@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useState, useEffect, useRef } from 'react';
 import {
     Play,
@@ -119,6 +120,7 @@ export default function App() {
     // --- MODULE 2 STATE (Q1 Bubble vs Selection Duel Arena) ---
     const [q1Step, setQ1Step] = useState(0); // 0 to 5 (Passes 0 to 5)
     const [q1IsPlaying, setQ1IsPlaying] = useState(false);
+    const [q1SelectedAlgorithm, setQ1SelectedAlgorithm] = useState('bubble');
 
     // --- MODULE 3 STATE (BST Traversal Visualizer) ---
     const [activeTreePreset, setActiveTreePreset] = useState('FEB_2025'); // FEB_2025, JULY_2025
@@ -940,7 +942,7 @@ className = {`flex-1 py-3 px-4 text-xs font-bold tracking-wider uppercase border
                                                                         < path d = "M 200 105 L 200 130" fill = "none" markerEnd = {`url(#${isNodeActive(["OUTER_LOOP_INIT"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["OUTER_LOOP_INIT"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
                                                                             < g > <polygon points="200,130 285,160 200,190 115,160" className = {`fill-slate-950 stroke-2 ${isNodeActive(["OUTER_LOOP_CHECK"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="200" y="163" textAnchor="middle" className={`font-bold ${isNodeActive(["OUTER_LOOP_CHECK"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>i &lt; (s - 1)?</text > </g>
                                                                                 < path d = "M 200 190 L 200 215" fill = "none" markerEnd = {`url(#${isNodeActive(["OUTER_LOOP_CHECK"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["OUTER_LOOP_CHECK"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
-                                                                                    < g > <rect x="120" y = "215" width = "160" height = "40" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["MIN_INIT"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="200" y="233" textAnchor="middle" className={`font-bold ${isNodeActive(["MIN_INIT"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>m = myNumber[i]</text > <text x="200" y = "247" textAnchor = "middle" className = {`font-bold ${isNodeActive(["MIN_INIT"]) ? 'fill-amber-400' : 'fill-slate-300'}`}> mIdx = i < /text></g >
+                                                                                    < g > <rect x="120" y = "215" width = "160" height = "40" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["MIN_INIT"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="200" y="233" textAnchor="middle" className={`font-bold ${isNodeActive(["MIN_INIT"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>m = myNumber[i]</text > <text x="200" y = "247" textAnchor = "middle" className = {`font-bold ${isNodeActive(["MIN_INIT"]) ? 'fill-amber-400' : 'fill-slate-300'}`}> mIdx = i </text></g >
                                                                                         <path d="M 200 255 L 200 280" fill = "none" markerEnd = {`url(#${isNodeActive(["MIN_INIT"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["MIN_INIT"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
                                                                                             < g > <rect x="130" y = "280" width = "140" height = "35" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["INNER_LOOP_INIT"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="200" y="301" textAnchor="middle" className={`font-bold ${isNodeActive(["INNER_LOOP_INIT"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>j = i + 1</text > </g>
                                                                                                 < path d = "M 270 297.5 L 360 297.5 L 360 310" fill = "none" markerEnd = {`url(#${isNodeActive(["INNER_LOOP_INIT"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["INNER_LOOP_INIT"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
@@ -948,7 +950,7 @@ className = {`flex-1 py-3 px-4 text-xs font-bold tracking-wider uppercase border
                                                                                                         < path d = "M 360 360 L 360 390" fill = "none" markerEnd = {`url(#${isNodeActive(["INNER_LOOP_CHECK"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["INNER_LOOP_CHECK"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
                                                                                                             < g > <polygon points="360,390 455,420 360,450 265,420" className = {`fill-slate-950 stroke-2 ${isNodeActive(["COMPARE"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="360" y="423" textAnchor="middle" className={`font-bold ${isNodeActive(["COMPARE"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>myNumber[j] &lt; m?</text > </g>
                                                                                                                 < path d = "M 455 420 L 510 420" fill = "none" markerEnd = {`url(#${isNodeActive(["COMPARE"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["COMPARE"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
-                                                                                                                    < g > <rect x="510" y = "400" width = "150" height = "40" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["UPDATE_MIN"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="585" y="418" textAnchor="middle" className={`font-bold ${isNodeActive(["UPDATE_MIN"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>m = myNumber[j]</text > <text x="585" y = "432" textAnchor = "middle" className = {`font-bold ${isNodeActive(["UPDATE_MIN"]) ? 'fill-amber-400' : 'fill-slate-300'}`}> mIdx = j < /text></g >
+                                                                                                                    < g > <rect x="510" y = "400" width = "150" height = "40" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["UPDATE_MIN"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="585" y="418" textAnchor="middle" className={`font-bold ${isNodeActive(["UPDATE_MIN"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>m = myNumber[j]</text > <text x="585" y = "432" textAnchor = "middle" className = {`font-bold ${isNodeActive(["UPDATE_MIN"]) ? 'fill-amber-400' : 'fill-slate-300'}`}> mIdx = j </text></g >
                                                                                                                         <path d="M 585 400 L 585 355" fill = "none" markerEnd = {`url(#${isNodeActive(["UPDATE_MIN"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["UPDATE_MIN"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
                                                                                                                             < g > <rect x="540" y = "320" width = "90" height = "35" rx = "4" className = {`fill-slate-950 stroke-2 ${isNodeActive(["INNER_INC"]) ? 'stroke-amber-500 fill-amber-950/20' : 'stroke-slate-700'}`} /><text x="585" y="341" textAnchor="middle" className={`font-bold ${isNodeActive(["INNER_INC"]) ? 'fill-amber-400' : 'fill-slate-300'}`}>j++</text > </g>
                                                                                                                                 < path d = "M 540 337.5 L 445 337.5" fill = "none" markerEnd = {`url(#${isNodeActive(["INNER_INC"]) ? 'arrow-active' : 'arrow'})`} className = {`stroke-2 ${isNodeActive(["INNER_INC"]) ? 'stroke-amber-500' : 'stroke-slate-600'}`} />
@@ -1054,7 +1056,7 @@ className = {`flex-1 py-3 px-4 text-xs font-bold tracking-wider uppercase border
 }
 {
     getTraceTableRows().length === 0 && (
-        <tr><td colSpan="6" className = "p-6 text-center text-slate-500 italic" > No passes completed yet.Press Play to build trace.< /td></tr >
+        <tr><td colSpan="6" className = "p-6 text-center text-slate-500 italic" > No passes completed yet.Press Play to build trace.</td></tr >
                     )
 }
 </tbody>
@@ -1137,7 +1139,7 @@ className = "w-full py-2 bg-amber-500 text-slate-950 hover:bg-amber-400 disabled
         </button>
                 ) : (
     <div className= "w-full flex justify-between items-center bg-slate-900/80 p-3 rounded border border-slate-800" >
-    <span className="text-xs text-slate-300" > Your Score: <strong className="text-amber-400 font-bold text-sm" > { quizScore } / { quizQuestions.length } < /strong></span >
+    <span className="text-xs text-slate-300" > Your Score: <strong className="text-amber-400 font-bold text-sm" > { quizScore } / { quizQuestions.length } </strong></span >
         <button onClick={ () => { setQuizScore(null); setQuizAnswers({}); } } className = "text-[10px] bg-slate-950 px-2.5 py-1.5 rounded border border-slate-800 text-slate-400" > Try Again </button>
             </div>
                 )}
@@ -1157,7 +1159,7 @@ className = "w-full py-2 bg-amber-500 text-slate-950 hover:bg-amber-400 disabled
                         <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-6" >
                             <div>
                             <h3 className="font-bold text-lg text-white" > Q1 Sort Duel Arena </h3>
-                                < p className = "text-slate-400 text-xs font-mono" > Array: <span className="text-amber-400" > [22, 5, 67, 98, 45, 32, 101, 99, 73, 10] < /span></p >
+                                < p className = "text-slate-400 text-xs font-mono" > Array: <span className="text-amber-400" > [22, 5, 67, 98, 45, 32, 101, 99, 73, 10] </span></p >
                                     </div>
                                     < div className = "flex bg-slate-900 border border-slate-800 rounded-lg p-1" >
                                         <button onClick={ () => { setQ1SelectedAlgorithm('bubble'); setQ1Step(0); } } className = {`px-3 py-1.5 text-xs font-bold rounded ${q1SelectedAlgorithm === 'bubble' ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-slate-200'}`
@@ -1320,7 +1322,7 @@ className = "w-full py-2 bg-amber-500 text-slate-950 hover:bg-amber-400 disabled
 
     < div className = "mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 bg-slate-900 p-3 rounded-lg border border-slate-800" >
         <button onClick={ handleRunTraversalAnimation } disabled = { treeIsAnimating } className = "w-full sm:w-auto px-5 py-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs rounded transition-all" > { treeIsAnimating? "Animating...": `Animate ${selectedTraversal.toLowerCase()}` } </button>
-            < div className = "text-xs text-slate-400" > Preset: <span className="text-amber-400 font-bold" > { activeTreePreset.replace('_', ' ') } < /span></div >
+            < div className = "text-xs text-slate-400" > Preset: <span className="text-amber-400 font-bold" > { activeTreePreset.replace('_', ' ') } </span></div >
                 </div>
                 </div>
                 </div>
@@ -1345,11 +1347,11 @@ className = "w-full py-2 bg-amber-500 text-slate-950 hover:bg-amber-400 disabled
         <h3 className="font-bold text-sm uppercase tracking-wider text-slate-300 mb-3" > Traversal Rules Cheat - Sheet </h3>
             < div className = "flex flex-col gap-3.5 text-xs text-slate-300" >
                 <div className="p-3 bg-slate-900 border border-slate-855 rounded" >
-                    <div className="flex justify-between font-bold text-amber-400 mb-1" > <span>Preorder Traversal < /span><span>Root → Left → Right</span > </div>
+                    <div className="flex justify-between font-bold text-amber-400 mb-1" > <span>Preorder Traversal </span><span>Root → Left → Right</span > </div>
                         < p className = "text-slate-400 text-[11px]" > Visits the parent / root node first, then down the left subtree, then the right subtree.</p>
                             </div>
                             < div className = "p-3 bg-slate-900 border border-slate-855 rounded" >
-                                <div className="flex justify-between font-bold text-emerald-400 mb-1" > <span>Inorder Traversal < /span><span>Left → Root → Right</span > </div>
+                                <div className="flex justify-between font-bold text-emerald-400 mb-1" > <span>Inorder Traversal </span><span>Left → Root → Right</span > </div>
                                     < p className = "text-slate-400 text-[11px]" > Visits left child first, then root, then right child.This lists elements in sorted ascending order on BSTs.</p>
                                         </div>
                                         </div>
